@@ -6,8 +6,12 @@
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 #include "Game/GameEntities/PlayerEntity.h"
 #include "Game/GameEntities/LollipopEntity.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
 
 using namespace Game;
+std::vector<LollipopEntity*> m_lollipops(8);
 
 GameBoard::GameBoard()
 	: m_player(nullptr)
@@ -20,15 +24,28 @@ GameBoard::GameBoard()
 	m_player->SetPos(sf::Vector2f(50.f, 50.f));
 	m_player->SetSize(sf::Vector2f(40.f, 40.f));
 
-	m_lollipop = new LollipopEntity();
-
-	GameEngine::GameEngineMain::GetInstance()->AddEntity(m_lollipop);
-	m_lollipop->SetPos(sf::Vector2f(80.f, 80.f));
-	m_lollipop->SetSize(sf::Vector2f(20.f, 20.f));
+	for (int i = 0; i < Game::PlayerEntity::lollipopsToCollect; i++) {
+		m_lollipops[i] = new LollipopEntity();
+		int lollipopSize = 20;
+		//render randomly - small placement restriction to make sure image isn't too cut off
+		int randX = rand() % ((int)GameEngine::GameEngineMain::getWindowWidth()- lollipopSize);
+		int randY = rand() % ((int)GameEngine::GameEngineMain::getWindowHeight()- lollipopSize);
+		m_lollipops[i]->SetPos(sf::Vector2f(randX, randY));
+		m_lollipops[i]->SetSize(sf::Vector2f(lollipopSize, lollipopSize));
+		GameEngine::GameEngineMain::GetInstance()->AddEntity(m_lollipops[i]);
+		std::cout << i+1 << "\n";
+	}
 
 	CreateBackGround();
 }
 
+void remove_Lollipop() { //constantly kill off collected lollipops
+	for(int i = 0; i < Game::PlayerEntity::lollipopsToCollect; i++){
+		if (m_lollipops[i]->lollipop_alive == false) {
+			GameEngine::GameEngineMain::GetInstance()->RemoveEntity(m_lollipops[i]);
+		}
+	}
+}
 
 GameBoard::~GameBoard()
 {
@@ -41,7 +58,11 @@ void GameBoard::Update()
 	float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
 	if (!m_isGameOver)
 	{
-
+		remove_Lollipop();
+		if (m_player->collectedLollipops == m_player->lollipopsToCollect) {
+			std::cout << "You win!" << "\n";
+			m_isGameOver = true;
+		}
 	}
 }
 

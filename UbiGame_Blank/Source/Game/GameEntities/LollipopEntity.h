@@ -14,7 +14,7 @@ namespace Game
 
 		virtual void OnAddToWorld() override;
 		virtual void OnRemoveFromWorld() override;
-		bool alive = true;
+		bool lollipop_alive = true;
 		unsigned int itemsGathered = 0;
 
 	protected:

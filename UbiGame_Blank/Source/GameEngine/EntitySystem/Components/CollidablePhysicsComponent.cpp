@@ -4,6 +4,7 @@
 #include "GameEngine/EntitySystem/Entity.h"
 #include "Game/GameEntities/PlayerEntity.h"
 #include "Game/GameEntities/LollipopEntity.h"
+
 #include <iostream>
 #include <vector>
 
@@ -55,9 +56,12 @@ void CollidablePhysicsComponent::Update() //0 = nothing, 1 = lollipop, 2 = monst
 			GameEngine::Entity* entity = colComponent->GetEntity();
 			if (dynamic_cast<Game::LollipopEntity*>(entity)) { //try to turn whatever this is into a lollipop. If it fits -- it probably is one. 
 				Game::PlayerEntity* playerEntity = dynamic_cast<Game::PlayerEntity*>(GetEntity());
-				playerEntity->collectedLollipops++;
-				//debug
-				//std::cout << "we got one" << "\n";
+				Game::LollipopEntity* thisLollipop = dynamic_cast<Game::LollipopEntity*>(entity);
+				if (thisLollipop->lollipop_alive == true) {
+					playerEntity->collectedLollipops++;
+					thisLollipop->lollipop_alive = false;
+ 					std::cout << "we got one" << "\n";
+				}
 			}
 
 

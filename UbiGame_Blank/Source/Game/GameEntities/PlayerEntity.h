@@ -14,7 +14,7 @@ namespace Game
 
 		virtual void OnAddToWorld() override;
 		virtual void OnRemoveFromWorld() override;
-		int collectedLollipops = 0; const int lollipopsToCollect = 8;
+		int collectedLollipops = 0; static const int lollipopsToCollect = 8;
 		bool alive = true;
 		unsigned int itemsGathered = 0;
 

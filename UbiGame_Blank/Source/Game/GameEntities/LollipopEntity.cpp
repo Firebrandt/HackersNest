@@ -22,7 +22,7 @@ LollipopEntity::LollipopEntity()
 
 LollipopEntity::~LollipopEntity()
 {
-
+	
 }
 
 
