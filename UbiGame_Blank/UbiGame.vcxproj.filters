@@ -60,9 +60,6 @@
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\ParticleEmitterComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GameEngine\EntitySystem\Components\SoundComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -76,6 +73,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\GameEngine\Util\CameraManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\GameEntities\LollipopEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -122,9 +122,6 @@
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\ParticleEmitterComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GameEngine\EntitySystem\Components\SoundComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -137,12 +134,18 @@
     <ClInclude Include="Source\GameEngine\Util\CameraManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Game\GameEntities\LollipopEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\img\player.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\img\bg.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\img\lollipop.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

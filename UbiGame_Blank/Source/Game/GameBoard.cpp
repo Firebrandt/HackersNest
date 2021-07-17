@@ -1,9 +1,11 @@
 #include "GameBoard.h"
 
+
 #include "GameEngine/GameEngineMain.h"
 #include "GameEngine/EntitySystem/Components/CollidableComponent.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 #include "Game/GameEntities/PlayerEntity.h"
+#include "Game/GameEntities/LollipopEntity.h"
 
 using namespace Game;
 
@@ -17,6 +19,12 @@ GameBoard::GameBoard()
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(m_player);
 	m_player->SetPos(sf::Vector2f(50.f, 50.f));
 	m_player->SetSize(sf::Vector2f(40.f, 40.f));
+
+	m_lollipop = new LollipopEntity();
+
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(m_lollipop);
+	m_lollipop->SetPos(sf::Vector2f(80.f, 80.f));
+	m_lollipop->SetSize(sf::Vector2f(20.f, 20.f));
 
 	CreateBackGround();
 }

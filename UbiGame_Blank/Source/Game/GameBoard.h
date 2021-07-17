@@ -8,6 +8,7 @@ namespace Game
 {
 	//Used for storing and controling all game related entities
 	class PlayerEntity;
+	class LollipopEntity;
 
 	class GameBoard
 	{
@@ -36,7 +37,9 @@ namespace Game
 		void UpdateBackGround();
 
 		PlayerEntity* m_player;
+		LollipopEntity* m_lollipop;
 		GameEngine::Entity* m_backGround;
+
 
 		std::vector<GameEngine::Entity*> m_obstacles;
 		float m_lastObstacleSpawnTimer;

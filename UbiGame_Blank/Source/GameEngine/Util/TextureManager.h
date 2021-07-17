@@ -13,6 +13,7 @@ namespace GameEngine
 			None = -1,
 			Player = 0,
 			BG,
+			Lollipop,
 			Count,
 		};
 	}	
@@ -23,6 +24,7 @@ namespace GameEngine
 		{
 		case eTexture::Player:    return "player.png";
 		case eTexture::BG:		  return "bg.png";
+		case eTexture::Lollipop: return "lollipop.png";
 		default:       return "UnknownTexType";
 		}
 	}

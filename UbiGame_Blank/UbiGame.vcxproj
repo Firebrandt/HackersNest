@@ -166,7 +166,6 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\ParticleComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\ParticleEmitterComponent.cpp" />
-    <ClCompile Include="Source\GameEngine\EntitySystem\Components\SoundComponent.cpp" />
     <ClCompile Include="Source\GameEngine\Util\AnimationManager.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\AnimationComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\CollidablePhysicsComponent.cpp" />
@@ -177,6 +176,7 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\RenderComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Component.cpp" />
     <ClCompile Include="Source\Game\GameComponents\PlayerMovementComponent.cpp" />
+    <ClCompile Include="Source\Game\GameEntities\LollipopEntity.cpp" />
     <ClCompile Include="Source\Game\GameEntities\PlayerEntity.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Entity.cpp" />
@@ -188,7 +188,6 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\ParticleComponent.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\ParticleEmitterComponent.h" />
-    <ClInclude Include="Source\GameEngine\EntitySystem\Components\SoundComponent.h" />
     <ClInclude Include="Source\GameEngine\Util\AnimationManager.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\AnimationComponent.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\CollidablePhysicsComponent.h" />
@@ -203,10 +202,12 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\GameEngine\Util\TextureManager.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.h" />
     <ClInclude Include="Source\Game\GameComponents\PlayerMovementComponent.h" />
+    <ClInclude Include="Source\Game\GameEntities\LollipopEntity.h" />
     <ClInclude Include="Source\Game\GameEntities\PlayerEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\img\bg.png" />
+    <Image Include="Resources\img\lollipop.png" />
     <Image Include="Resources\img\player.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
