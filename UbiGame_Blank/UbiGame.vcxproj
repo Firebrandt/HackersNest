@@ -164,7 +164,6 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.cpp" />
-    <ClCompile Include="Source\GameEngine\Util\CameraManager.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\ParticleComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\ParticleEmitterComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\SoundComponent.cpp" />
@@ -172,11 +171,13 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\AnimationComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\CollidablePhysicsComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\CollidableComponent.cpp" />
+    <ClCompile Include="Source\GameEngine\Util\CameraManager.cpp" />
     <ClCompile Include="Source\GameEngine\Util\CollisionManager.cpp" />
-    <ClCompile Include="Source\GameEngine\Util\SoundManager.cpp" />
     <ClCompile Include="Source\Game\GameBoard.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\RenderComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Component.cpp" />
+    <ClCompile Include="Source\Game\GameComponents\PlayerMovementComponent.cpp" />
+    <ClCompile Include="Source\Game\GameEntities\PlayerEntity.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Entity.cpp" />
     <ClCompile Include="Source\GameEngine\GameEngineMain.cpp" />
@@ -185,7 +186,6 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.h" />
-    <ClInclude Include="Source\GameEngine\Util\CameraManager.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\ParticleComponent.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\ParticleEmitterComponent.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\SoundComponent.h" />
@@ -193,8 +193,8 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\AnimationComponent.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\CollidablePhysicsComponent.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\CollidableComponent.h" />
+    <ClInclude Include="Source\GameEngine\Util\CameraManager.h" />
     <ClInclude Include="Source\GameEngine\Util\CollisionManager.h" />
-    <ClInclude Include="Source\GameEngine\Util\SoundManager.h" />
     <ClInclude Include="Source\Game\GameBoard.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\RenderComponent.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Component.h" />
@@ -202,6 +202,12 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\GameEngine\GameEngineMain.h" />
     <ClInclude Include="Source\GameEngine\Util\TextureManager.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.h" />
+    <ClInclude Include="Source\Game\GameComponents\PlayerMovementComponent.h" />
+    <ClInclude Include="Source\Game\GameEntities\PlayerEntity.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\img\bg.png" />
+    <Image Include="Resources\img\player.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
