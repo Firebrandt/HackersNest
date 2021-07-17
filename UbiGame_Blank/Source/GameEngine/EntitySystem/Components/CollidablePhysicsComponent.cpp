@@ -2,7 +2,9 @@
 
 #include "GameEngine/Util/CollisionManager.h"
 #include "GameEngine/EntitySystem/Entity.h"
-
+#include "Game/GameEntities/PlayerEntity.h"
+#include "Game/GameEntities/LollipopEntity.h"
+#include <iostream>
 #include <vector>
 
 using namespace GameEngine;
@@ -31,9 +33,9 @@ void CollidablePhysicsComponent::OnRemoveFromWorld()
 }
 
 
-void CollidablePhysicsComponent::Update()
+void CollidablePhysicsComponent::Update() //0 = nothing, 1 = lollipop, 2 = monster
 {
-	//For the time being just a simple intersection check that moves the entity out of all potential intersect boxes
+	//For the time being just a simple intersection check 
 	std::vector<CollidableComponent*>& collidables = CollisionManager::GetInstance()->GetCollidables();
 
 	for (int a = 0; a < collidables.size(); ++a)
@@ -45,25 +47,20 @@ void CollidablePhysicsComponent::Update()
 		AABBRect intersection;
 		AABBRect myBox = GetWorldAABB();
 		AABBRect colideBox = colComponent->GetWorldAABB();
+		//colcomponent = what we're (possibly) hitting
 		if (myBox.intersects(colideBox, intersection))
 		{
 			sf::Vector2f pos = GetEntity()->GetPos();
-			if (intersection.width < intersection.height)
-			{
-				if (myBox.left < colideBox.left)
-					pos.x -= intersection.width;
-				else
-					pos.x += intersection.width;
-			}
-			else
-			{
-				if (myBox.top < colideBox.top)
-					pos.y -= intersection.height;
-				else
-					pos.y += intersection.height;
+			//inform the player entity that a collision has happened.
+			GameEngine::Entity* entity = colComponent->GetEntity();
+			if (dynamic_cast<Game::LollipopEntity*>(entity)) { //try to turn whatever this is into a lollipop. If it fits -- it probably is one. 
+				Game::PlayerEntity* playerEntity = dynamic_cast<Game::PlayerEntity*>(GetEntity());
+				playerEntity->collectedLollipops++;
+				//debug
+				//std::cout << "we got one" << "\n";
 			}
 
-			GetEntity()->SetPos(pos);
+
 		}
 	}
 }
