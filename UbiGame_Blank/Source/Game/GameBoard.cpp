@@ -6,6 +6,8 @@
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 #include "Game/GameEntities/PlayerEntity.h"
 #include "Game/GameEntities/LollipopEntity.h"
+#include "Game/GameEntities/MonsterEntity.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
@@ -17,19 +19,29 @@ GameBoard::GameBoard()
 	: m_player(nullptr)
 	, m_backGround(nullptr)
 	, m_isGameOver(false)
+	, m_monster(nullptr)
 {
 	m_player = new PlayerEntity();
 
-	GameEngine::GameEngineMain::GetInstance()->AddEntity(m_player);
 	m_player->SetPos(sf::Vector2f(50.f, 50.f));
 	m_player->SetSize(sf::Vector2f(40.f, 40.f));
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(m_player);
+
+	m_monster = new MonsterEntity();
+	m_monster->GetComponent<MonsterMovementComponent>()->setPlayer(m_player);
+	m_monster->SetPos(sf::Vector2f(300.f, 300.f));
+	m_monster->SetSize(sf::Vector2f(40.f, 40.f));
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(m_monster);
+	
 
 	for (int i = 0; i < Game::PlayerEntity::lollipopsToCollect; i++) {
 		m_lollipops[i] = new LollipopEntity();
 		int lollipopSize = 20;
 		//render randomly - small placement restriction to make sure image isn't too cut off
-		int randX = rand() % ((int)GameEngine::GameEngineMain::getWindowWidth()- lollipopSize);
-		int randY = rand() % ((int)GameEngine::GameEngineMain::getWindowHeight()- lollipopSize);
+		int randX = (rand()) % ((int)GameEngine::GameEngineMain::getWindowWidth()- lollipopSize);
+		int randY = (rand()) % ((int)GameEngine::GameEngineMain::getWindowHeight()- lollipopSize);
+		if (randX < lollipopSize) { randX = lollipopSize; } 
+		if (randY < lollipopSize) { randY = lollipopSize; }
 		m_lollipops[i]->SetPos(sf::Vector2f(randX, randY));
 		m_lollipops[i]->SetSize(sf::Vector2f(lollipopSize, lollipopSize));
 		GameEngine::GameEngineMain::GetInstance()->AddEntity(m_lollipops[i]);
@@ -63,7 +75,11 @@ void GameBoard::Update()
 			std::cout << "You win!" << "\n";
 			m_isGameOver = true;
 		}
-	}
+		if (m_player->alive == false) {
+			std::cout << "You have died. :(" << "\n";
+			m_isGameOver = true;
+		}
+	} 
 }
 
 

@@ -4,7 +4,7 @@
 #include "GameEngine/EntitySystem/Entity.h"
 #include "Game/GameEntities/PlayerEntity.h"
 #include "Game/GameEntities/LollipopEntity.h"
-
+#include "Game/GameEntities/MonsterEntity.h"
 #include <iostream>
 #include <vector>
 
@@ -34,7 +34,7 @@ void CollidablePhysicsComponent::OnRemoveFromWorld()
 }
 
 
-void CollidablePhysicsComponent::Update() //0 = nothing, 1 = lollipop, 2 = monster
+void CollidablePhysicsComponent::Update() 
 {
 	//For the time being just a simple intersection check 
 	std::vector<CollidableComponent*>& collidables = CollisionManager::GetInstance()->GetCollidables();
@@ -53,18 +53,22 @@ void CollidablePhysicsComponent::Update() //0 = nothing, 1 = lollipop, 2 = monst
 		{
 			sf::Vector2f pos = GetEntity()->GetPos();
 			//inform the player entity that a collision has happened.
-			GameEngine::Entity* entity = colComponent->GetEntity();
-			if (dynamic_cast<Game::LollipopEntity*>(entity)) { //try to turn whatever this is into a lollipop. If it fits -- it probably is one. 
+			GameEngine::Entity* collidedEntity = colComponent->GetEntity();
+
+			if (dynamic_cast<Game::PlayerEntity*>(GetEntity())) {
 				Game::PlayerEntity* playerEntity = dynamic_cast<Game::PlayerEntity*>(GetEntity());
-				Game::LollipopEntity* thisLollipop = dynamic_cast<Game::LollipopEntity*>(entity);
-				if (thisLollipop->lollipop_alive == true) {
-					playerEntity->collectedLollipops++;
-					thisLollipop->lollipop_alive = false;
- 					std::cout << "we got one" << "\n";
+				if (dynamic_cast<Game::LollipopEntity*>(collidedEntity)) { //try to turn whatever this is into a lollipop. If it fits -- it probably is one. 
+					Game::LollipopEntity* thisLollipop = dynamic_cast<Game::LollipopEntity*>(collidedEntity);
+					if (thisLollipop->lollipop_alive == true) {
+						playerEntity->collectedLollipops++;
+						thisLollipop->lollipop_alive = false;
+						std::cout << "we got one" << "\n";
+					}
+				}
+				else if (dynamic_cast<Game::MonsterEntity*>(collidedEntity)) {
+					playerEntity->alive = false;
 				}
 			}
-
-
 		}
 	}
 }

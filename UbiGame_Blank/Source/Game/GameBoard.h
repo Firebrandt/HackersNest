@@ -9,6 +9,7 @@ namespace Game
 	//Used for storing and controling all game related entities
 	class PlayerEntity;
 	class LollipopEntity;
+	class MonsterEntity;
 
 	class GameBoard
 	{
@@ -38,6 +39,7 @@ namespace Game
 
 		PlayerEntity* m_player;
 		LollipopEntity* m_lollipop;
+		MonsterEntity* m_monster;
 		GameEngine::Entity* m_backGround;
 
 

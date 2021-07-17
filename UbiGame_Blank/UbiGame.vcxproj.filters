@@ -78,6 +78,12 @@
     <ClCompile Include="Source\Game\GameEntities\LollipopEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Game\GameEntities\MonsterEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\GameComponents\MonsterMovementComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GameEngine\GameEngineMain.h">
@@ -137,6 +143,12 @@
     <ClInclude Include="Source\Game\GameEntities\LollipopEntity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Game\GameEntities\MonsterEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\GameComponents\MonsterMovementComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\img\player.png">
@@ -146,6 +158,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\img\lollipop.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\img\monster.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
